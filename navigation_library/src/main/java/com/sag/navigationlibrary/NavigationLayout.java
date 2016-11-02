@@ -26,7 +26,8 @@ public class NavigationLayout extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         if (changed) {
-            getChildAt(0).layout(l, t, r, (int) (b - height));
+            getY();
+            getChildAt(0).layout(0, 0, r, (int) (b - height));
             int total = getChildCount(), left = 0, top = (int) (b - height), width = r / (total - 1);
             for (int i = 1; i < total; i++) {
                 View child = getChildAt(i);
