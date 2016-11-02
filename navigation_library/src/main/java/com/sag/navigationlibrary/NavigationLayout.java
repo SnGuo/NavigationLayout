@@ -26,16 +26,15 @@ public class NavigationLayout extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         if (changed) {
-            ViewGroup.LayoutParams plp = getLayoutParams();
-            getChildAt(0).layout(0, 0, plp.width, (int) (plp.height - height));
-            int total = getChildCount(), left = 0, top = (int) (plp.height - height), width = r / (total - 1);
+            getChildAt(0).layout(0, 0, (r - l), (int) (b - t - height));
+            int total = getChildCount(), left = 0, top = (int) (b - t - height), width = (r - l) / (total - 1);
             for (int i = 1; i < total; i++) {
                 View child = getChildAt(i);
                 LayoutParams vlp = child.getLayoutParams();
                 if (vlp.height >= 0) {
-                    child.layout(left + (i - 1) * width, plp.height - vlp.height, left + i * width, b);
+                    child.layout(left + (i - 1) * width, b - t - vlp.height, left + i * width, b - t);
                 } else {
-                    child.layout(left + (i - 1) * width, top, left + i * width, b);
+                    child.layout(left + (i - 1) * width, (int) (b - t - height), left + i * width, b - t);
                 }
             }
             getChildAt(mCurrentButton + 1).setSelected(true);
