@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NavigationLayout">
+        <attr name="navigation_height" format="dimension" />
+        <attr name="navigation_def_button" format="integer" />
+    </declare-styleable>
+</resources>
